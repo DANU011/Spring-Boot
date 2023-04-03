@@ -3,6 +3,9 @@ package edu.pnu.log;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.springframework.stereotype.Repository;
+
+//@Repository
 public class LogDaoListImpl implements LogDao {
 	FileWriter fileWriter;
 

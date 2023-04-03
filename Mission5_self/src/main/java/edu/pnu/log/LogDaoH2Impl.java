@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class LogDaoH2Impl implements LogDao {
 	private Connection con = null;
 	

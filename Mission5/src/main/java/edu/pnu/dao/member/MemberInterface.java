@@ -1,10 +1,10 @@
-package edu.pnu.dao;
+package edu.pnu.dao.member;
 
 import java.util.Map;
 
 import edu.pnu.domain.MemberVO;
 
-public interface MemberDao {
+public interface MemberInterface {
 
 	Map<String, Object> getMembers();
 
