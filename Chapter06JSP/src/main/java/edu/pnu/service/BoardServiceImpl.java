@@ -10,6 +10,7 @@ import edu.pnu.persistence.BoardRepository;
 
 @Service
 public class BoardServiceImpl implements BoardService {
+	
 	@Autowired
 	private BoardRepository boardRepo;
 	
@@ -24,11 +25,17 @@ public class BoardServiceImpl implements BoardService {
 	public Board getBoard(Board board) {
 		return boardRepo.findById(board.getSeq()).get();
 	}
+	
 	public void updateBoard(Board board) {
+		Board findBoard = boardRepo.findById(board.getSeq()).get();
 		
+		findBoard.setTitle(board.getTitle());
+		findBoard.setContent(board.getContent());
+		boardRepo.save(findBoard);
 	}
+	
 	public void deleteBoard(Board board) {
-		
+		boardRepo.deleteById(board.getSeq());
 	}
 	
 	

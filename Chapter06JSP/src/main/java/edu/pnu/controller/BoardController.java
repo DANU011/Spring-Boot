@@ -1,7 +1,5 @@
 package edu.pnu.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,13 +39,13 @@ public class BoardController {
 ////		return boardList;
 //	}
 	
-	@RequestMapping("/getBoardList")
+	@RequestMapping
 	public String getBoardList(Model model,Board board) {
 		List<Board> boardList = boardService.getBoardList(board);
 		
 		model.addAttribute("boardList", boardList);
-		return "board/getBoardList";}
-	
+		return "board/getBoardList";
+	}
 	
 	@GetMapping("/insertBoard")
 	public String insertBoardView() {
@@ -63,7 +61,19 @@ public class BoardController {
 	@GetMapping("/getBoard")
 	public String getBoard(Board board, Model model) {
 		model.addAttribute("board", boardService.getBoard(board));
-		return "getBoard";
+		return "board/getBoard";
+	}
+	
+	@PostMapping("/updateBoard")
+	public String updateBoard(Board board) {
+		boardService.updateBoard(board);
+		return "forward:getBoardList";
+	}
+	
+	@GetMapping("/deleteBoard")
+	public String deleteBoard(Board board) {
+		boardService.deleteBoard(board);
+		return "forward:getBoardList";
 	}
 		
 }
